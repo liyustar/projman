@@ -17,4 +17,5 @@ CXXFLAGS = -I..
 all: $(TESTBIN)
 	@echo "module_1 test"
 
+# DEPLIBS不能放在LDLIBS，因为只有这样才会检测依赖，重新编译
 $(TESTBIN): $(DEPLIBS)
