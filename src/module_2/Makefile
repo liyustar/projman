@@ -3,7 +3,8 @@ include ../define.mk
 MODULE := module_2
 
 CPPFILES := $(wildcard *.cpp)
--include $(patsubst %.cpp, %.d, $(CPPFILES))
+DEPINC := $(patsubst %.cpp, %.d, $(CPPFILES))
+include $(DEPINC)
 
 # must define - OBJ
 OBJ := $(patsubst %.cpp, %.o, $(CPPFILES))
@@ -16,4 +17,4 @@ test:
 	make -C test
 
 clean:
-	-rm $(OBJ)
+	-rm $(OBJ) $(DEPINC)
