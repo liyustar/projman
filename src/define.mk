@@ -14,3 +14,9 @@ CXXFLAGS += $(addprefix -I../,$(MODULES))
 
 $(PRODUCT): $(OBJ)
 	$(AR) $(ARFLAGS) $@ $<
+
+.cpp.d:
+	@set -e;rm -f $@; \
+	$(CC) -MM $(CPPFLAGS) $< > $@.$$$$; \
+	sed 's,\($*\)\.o[ :]*,\1.o $@ : ,g' < $@.$$$$ > $@; \
+	rm -f $@.$$$$
