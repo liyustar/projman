@@ -8,9 +8,11 @@ CPPFILES := $(wildcard *.cpp)
 OBJ := $(patsubst %.cpp, %.o, $(CPPFILES))
 
 all: $(PRODUCT)
-	make -C test
 
 $(PRODUCT): $(OBJ)
+
+test:
+	make -C test
 
 clean:
 	-rm $(OBJ)
