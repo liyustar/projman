@@ -1,14 +1,16 @@
+include ../define.mk
 
 MODULE := module_2
 
 CPPFILES := $(wildcard *.cpp)
+
+# must define - OBJ
 OBJ := $(patsubst %.cpp, %.o, $(CPPFILES))
 
-# depends
-DEPMODULE := ../module_1
-
-# fill default var
-CXXFLAGS += $(addprefix -I, $(DEPMODULE))
-
-all: $(OBJ)
+all: $(PRODUCT)
 	make -C test
+
+$(PRODUCT): $(OBJ)
+
+clean:
+	-rm $(OBJ)
