@@ -9,14 +9,14 @@ PRODUCT := $(LIBDIR)/liblyx.a
 MODULES := module_1 \
 			module_2
 
-CXXFLAGS := -g -Wall
-CXXFLAGS += $(addprefix -I../,$(MODULES))
+CPPFLAGS := -g -Wall
+CPPFLAGS += $(addprefix -I../,$(MODULES))
 
 $(PRODUCT): $(OBJ)
 	$(AR) $(ARFLAGS) $@ $<
 
 %.d: %.cpp
-	@set -e;rm -f $@; \
-	$(CC) -MM $(CPPFLAGS) $< > $@.$$$$; \
+	set -e;rm -f $@; \
+	$(CXX) -MM $(CPPFLAGS) $< > $@.$$$$; \
 	sed 's,\($*\)\.o[ :]*,\1.o $@ : ,g' < $@.$$$$ > $@; \
 	rm -f $@.$$$$
