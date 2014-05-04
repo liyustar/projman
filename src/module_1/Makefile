@@ -1,4 +1,4 @@
-include ../define.mk
+include ../projdef.mk
 
 MODULE := module_1
 
