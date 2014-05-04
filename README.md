@@ -8,3 +8,6 @@ module_1:
 
 module_2:
 	依赖module_1
+
+other/sigler.mk:
+	单个可执行文件的Makefile
