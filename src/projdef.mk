@@ -12,11 +12,13 @@ MODULES := module_1 \
 CPPFLAGS := -g -Wall
 CPPFLAGS += $(addprefix -I../,$(MODULES))
 
+all:
+
 $(PRODUCT): $(OBJ)
 	$(AR) $(ARFLAGS) $@ $<
 
 %.d: %.cpp
-	set -e;rm -f $@; \
+	@set -e;rm -f $@; \
 	$(CXX) -MM $(CPPFLAGS) $< > $@.$$$$; \
 	sed 's,\($*\)\.o[ :]*,\1.o $@ : ,g' < $@.$$$$ > $@; \
 	rm -f $@.$$$$
