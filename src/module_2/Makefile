@@ -13,9 +13,5 @@ all: $(PRODUCT)
 
 $(PRODUCT): $(OBJ)
 
-test:
-	make -C test
-
 clean:
 	-rm $(OBJ) $(DEPINC)
-	make -C test clean
